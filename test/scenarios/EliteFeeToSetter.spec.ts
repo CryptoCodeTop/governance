@@ -2,7 +2,7 @@ import chai, { expect } from 'chai'
 import { Contract, constants } from 'ethers'
 import { solidity, MockProvider, createFixtureLoader, deployContract } from 'ethereum-waffle'
 
-import EliteswapV2Factory from '@eliteswap/v2-core/build/EliteswapV2Factory.json'
+import Cryptocode99V2Factory from '@cryptocode99/v2-core/build/Cryptocode99V2Factory.json'
 import EliteFeeToSetter from '../../build/EliteFeeToSetter.json'
 
 import { governanceFixture } from '../fixtures'
@@ -26,8 +26,8 @@ describe('scenario:EliteFeeToSetter', () => {
   })
 
   let factory: Contract
-  beforeEach('deploy eliteswap v2', async () => {
-    factory = await deployContract(wallet, EliteswapV2Factory, [wallet.address])
+  beforeEach('deploy cryptocode99 v2', async () => {
+    factory = await deployContract(wallet, Cryptocode99V2Factory, [wallet.address])
   })
 
   let feeToSetter: Contract

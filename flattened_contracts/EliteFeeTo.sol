@@ -57,8 +57,8 @@ contract EliteFeeTo {
 
     function renounce(address pair) public returns (uint value) {
         PairAllowState storage pairAllowState = pairAllowStates[pair];
-        TokenAllowState storage token0AllowState = tokenAllowStates[IEliteswapV2Pair(pair).token0()];
-        TokenAllowState storage token1AllowState = tokenAllowStates[IEliteswapV2Pair(pair).token1()];
+        TokenAllowState storage token0AllowState = tokenAllowStates[ICryptocode99V2Pair(pair).token0()];
+        TokenAllowState storage token1AllowState = tokenAllowStates[ICryptocode99V2Pair(pair).token1()];
 
         // we must renounce if any of the following four conditions are true:
         // 1) token0 is currently disallowed
@@ -71,12 +71,12 @@ contract EliteFeeTo {
             token0AllowState.disallowCount > pairAllowState.token0DisallowCount ||
             token1AllowState.disallowCount > pairAllowState.token1DisallowCount
         ) {
-            value = IEliteswapV2Pair(pair).balanceOf(address(this));
+            value = ICryptocode99V2Pair(pair).balanceOf(address(this));
             if (value > 0) {
                 // burn balance into the pair, effectively redistributing underlying tokens pro-rata back to LPs
                 // (assert because transfer cannot fail with value as balanceOf)
-                assert(IEliteswapV2Pair(pair).transfer(pair, value));
-                IEliteswapV2Pair(pair).burn(pair);
+                assert(ICryptocode99V2Pair(pair).transfer(pair, value));
+                ICryptocode99V2Pair(pair).burn(pair);
             }
 
             // if token0 is allowed, we can now update the pair's disallow count to match the token's
@@ -92,8 +92,8 @@ contract EliteFeeTo {
 
     function claim(address pair) public returns (uint value) {
         PairAllowState storage pairAllowState = pairAllowStates[pair];
-        TokenAllowState storage token0AllowState = tokenAllowStates[IEliteswapV2Pair(pair).token0()];
-        TokenAllowState storage token1AllowState = tokenAllowStates[IEliteswapV2Pair(pair).token1()];
+        TokenAllowState storage token0AllowState = tokenAllowStates[ICryptocode99V2Pair(pair).token0()];
+        TokenAllowState storage token1AllowState = tokenAllowStates[ICryptocode99V2Pair(pair).token1()];
 
         // we may claim only if each of the following five conditions are true:
         // 1) token0 is currently allowed
@@ -108,16 +108,16 @@ contract EliteFeeTo {
             token1AllowState.disallowCount == pairAllowState.token1DisallowCount &&
             feeRecipient != address(0)
         ) {
-            value = IEliteswapV2Pair(pair).balanceOf(address(this));
+            value = ICryptocode99V2Pair(pair).balanceOf(address(this));
             if (value > 0) {
                 // transfer tokens to the handler (assert because transfer cannot fail with value as balanceOf)
-                assert(IEliteswapV2Pair(pair).transfer(feeRecipient, value));
+                assert(ICryptocode99V2Pair(pair).transfer(feeRecipient, value));
             }
         }
     }
 }
 
-interface IEliteswapV2Pair {
+interface ICryptocode99V2Pair {
     function token0() external view returns (address);
     function token1() external view returns (address);
     function balanceOf(address owner) external view returns (uint);

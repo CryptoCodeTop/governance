@@ -2,8 +2,8 @@ import chai, { expect } from 'chai'
 import { Contract, constants } from 'ethers'
 import { solidity, MockProvider, createFixtureLoader, deployContract } from 'ethereum-waffle'
 
-import EliteswapV2Factory from '@eliteswap/v2-core/build/EliteswapV2Factory.json'
-import EliteswapV2Pair from '@eliteswap/v2-core/build/EliteswapV2Pair.json'
+import Cryptocode99 from '@cryptocode99/v2-core/build/Cryptocode99V2Factory.json'
+import Cryptocode99V2Pair from '@cryptocode99/v2-core/build/Cryptocode99V2Pair.json'
 import EliteFeeToSetter from '../../build/EliteFeeToSetter.json'
 import EliteFeeTo from '../../build/EliteFeeTo.json'
 import Elt from '../../build/Elt.json'
@@ -29,8 +29,8 @@ describe('scenario:EliteFeeTo', () => {
   })
 
   let factory: Contract
-  beforeEach('deploy eliteswap v2', async () => {
-    factory = await deployContract(wallet, EliteswapV2Factory, [wallet.address])
+  beforeEach('deploy cryptocode99 v2', async () => {
+    factory = await deployContract(wallet, Cryptocode99V2Factory, [wallet.address])
   })
 
   let feeToSetter: Contract
@@ -84,7 +84,7 @@ describe('scenario:EliteFeeTo', () => {
       // create the pair
       await factory.createPair(tokens[0].address, tokens[1].address)
       const pairAddress = await factory.getPair(tokens[0].address, tokens[1].address)
-      pair = new Contract(pairAddress, EliteswapV2Pair.abi).connect(wallet)
+      pair = new Contract(pairAddress, Cryptocode99V2Pair.abi).connect(wallet)
 
       // add liquidity
       await tokens[0].transfer(pair.address, expandTo18Decimals(1))

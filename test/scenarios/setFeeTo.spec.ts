@@ -2,7 +2,7 @@ import chai, { expect } from 'chai'
 import { Contract, BigNumber, utils } from 'ethers'
 import { solidity, MockProvider, createFixtureLoader, deployContract } from 'ethereum-waffle'
 
-import EliteswapV2Factory from '@eliteswap/v2-core/build/EliteswapV2Factory.json'
+import Cryptocode99V2Factory from '@cryptocode99/v2-core/build/Cryptocode99V2Factory.json'
 
 import { governanceFixture } from '../fixtures'
 import { mineBlock, DELAY } from '../utils'
@@ -31,8 +31,8 @@ describe('scenario:setFeeTo', () => {
   })
 
   let factory: Contract
-  beforeEach('deploy eliteswap v2', async () => {
-    factory = await deployContract(wallet, EliteswapV2Factory, [timelock.address])
+  beforeEach('deploy cryptocode99 v2', async () => {
+    factory = await deployContract(wallet, Cryptocode99V2Factory, [timelock.address])
   })
 
   it('setFeeTo', async () => {
@@ -40,7 +40,7 @@ describe('scenario:setFeeTo', () => {
     const value = 0
     const signature = 'setFeeTo(address)'
     const calldata = utils.defaultAbiCoder.encode(['address'], [timelock.address])
-    const description = 'Set feeTo on the EliteswapV2Factory to the timelock address.'
+    const description = 'Set feeTo on the Cryptocode99V2Factory to the timelock address.'
 
     // activate balances
     await elt.delegate(wallet.address)

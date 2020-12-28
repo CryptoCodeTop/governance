@@ -1,5 +1,5 @@
 {
-  "name": "@eliteswap/governance",
+  "name": "@cryptocode99/governance",
   "version": "1.0.2",
   "description": "🏛 Governance contracts for the Elite Swap protocol",
   "author": "",
@@ -17,7 +17,7 @@
     "prepublishOnly": "yarn test"
   },
   "devDependencies": {
-    "@eliteswap/v2-core": "^1.0.1",
+    "@cryptocode99/v2-core": "^1.0.1",
     "@types/chai": "^4.2.12",
     "@types/mocha": "^8.0.3",
     "chai": "^4.2.0",
@@ -36,16 +36,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EthereumEliteswap/governance.git"
+    "url": "git+https://github.com/cryptocode99/governance.git"
   },
   "keywords": [
-    "eliteswap",
+    "cryptocode99",
     "ethereum",
     "governance",
     "elt"
   ],
   "bugs": {
-    "url": "https://github.com/EthereumEliteswap/governance/issues"
+    "url": "https://github.com/cryptocode99/governance/issues"
   },
-  "homepage": "https://eliteswap.org"
+  "homepage": "https://cryptocode99.org"
 }

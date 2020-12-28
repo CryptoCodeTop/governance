@@ -27,18 +27,18 @@ contract EliteFeeToSetter {
     function setFeeToSetter(address feeToSetter_) public {
         require(block.timestamp >= vestingEnd, 'EliteFeeToSetter::setFeeToSetter: not time yet');
         require(msg.sender == owner, 'EliteFeeToSetter::setFeeToSetter: not allowed');
-        IEliteswapV2Factory(factory).setFeeToSetter(feeToSetter_);
+        ICryptocode99V2Factory(factory).setFeeToSetter(feeToSetter_);
     }
 
     // allows owner to turn fees on/off after vesting
     function toggleFees(bool on) public {
         require(block.timestamp >= vestingEnd, 'EliteFeeToSetter::toggleFees: not time yet');
         require(msg.sender == owner, 'EliteFeeToSetter::toggleFees: not allowed');
-        IEliteswapV2Factory(factory).setFeeTo(on ? feeTo : address(0));
+        ICryptocode99V2Factory(factory).setFeeTo(on ? feeTo : address(0));
     }
 }
 
-interface IEliteswapV2Factory {
+interface ICryptocode99V2Factory {
     function setFeeToSetter(address) external;
     function setFeeTo(address) external;
 }

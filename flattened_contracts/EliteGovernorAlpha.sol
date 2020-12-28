@@ -3,7 +3,7 @@ pragma experimental ABIEncoderV2;
 
 contract EliteGovernorAlpha {
     /// @notice The name of this contract
-    string public constant name = "Eliteswap Governor Alpha";
+    string public constant name = "cryptocode99 Governor Alpha";
 
     /// @notice The number of votes in support of a proposal required in order for a quorum to be reached and for a vote to succeed
     function quorumVotes() public pure returns (uint) { return 400_000_000e18; } // 4% of Elt
@@ -20,10 +20,10 @@ contract EliteGovernorAlpha {
     /// @notice The duration of voting on a proposal, in blocks
     function votingPeriod() public pure returns (uint) { return 40_320; } // ~7 days in blocks (assuming 15s blocks)
 
-    /// @notice The address of the Eliteswap Protocol Timelock
+    /// @notice The address of the cryptocode99 Protocol Timelock
     EliteTimelockInterface public timelock;
 
-    /// @notice The address of the Eliteswap governance token
+    /// @notice The address of the cryptocode99 governance token
     EliteInterface public elt;
 
     /// @notice The total number of proposals
